@@ -22,9 +22,9 @@ const userSchema = new Schema({
         required: [true, "Password is required"]
     },
     birthdate:{
-        type: Date,
+        type: String,
         required: [true, "Birthdate is required"]
-    }},{timestamps:true});
+    }});
     
     userSchema.pre("save",async function(){
         var user = this;
@@ -39,6 +39,14 @@ const userSchema = new Schema({
             throw err;
         }
     });
+    userSchema.methods.comparePassword = async function (candidatePassword) {
+        try {
+            const isMatch = await bcrypt.compare(candidatePassword, this.password);
+            return isMatch;
+        } catch (error) {
+            throw console.log('Password Incorrect');
+        }
+    };
 const User = mongoose.model('User', userSchema);
 module.exports = User;    
     
