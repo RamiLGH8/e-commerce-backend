@@ -46,6 +46,6 @@ const userSchema = new Schema({
             throw console.log('Password Incorrect');
         }
     };
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('users', userSchema);
 module.exports = User;    
     
