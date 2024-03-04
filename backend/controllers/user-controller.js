@@ -26,7 +26,7 @@ exports.Login = async (req, res, next) => {
         }
         // Creating Token
         let tokenData;
-        tokenData = { _id: user._id, email: user.email };
+        tokenData = { _id: user._id};
     
         const token = await userService.GenerateAccessToken(tokenData,"secret","1h")
         res.status(200).json({ status: true, success: "sendData", token: token });

@@ -1,13 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Product = require('./product-model');
-const User = require('./user-model');
+const Cart = require('./cart-model');
 const orderSchema = new Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: User, required: true },
-    products: [{ 
-        product: { type: mongoose.Schema.Types.ObjectId, ref: Product },
-        quantity: { type: Number, default: 1 }
-    }],
+    cart :{ type: mongoose.Schema.Types.ObjectId, ref: Cart, required: true },
     totalPrice: { type: Number, required: true },
     shippingAddress: String,
     paymentInformation: String,
