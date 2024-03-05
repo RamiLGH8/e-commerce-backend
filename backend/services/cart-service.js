@@ -67,9 +67,9 @@ class CartService {
             throw err;
         }
     }
-    static async EmptyCart(userId) {
+    static async EmptyCart(cartId) {
         try {
-            const cart = await Cart.findOne({ user: userId });
+            const cart = await Cart.findOne({ _id: cartId });
             cart.products = [];
             await cart.save();
             return cart;
@@ -78,14 +78,16 @@ class CartService {
             throw err;
         }
     }
-    static async DeleteCart(userId) {
+    static async DeleteCart(_id){
         try {
-            const cart = await Cart.findOneAndDelete({ user: userId });
+           const cart = await Cart.findByIdAndDelete({_id});
             return cart;
         }
         catch (err) {
             throw err;
         }
     }
+    
 }
+
 module.exports = CartService;

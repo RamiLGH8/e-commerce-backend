@@ -1,9 +1,9 @@
 const router= require('express').Router();
 const{AddProductToCart,GetCartByUserId,DeleteProductFromCart,UpdateProductQuantity,EmptyCart,DeleteCart}=require('../controllers/cart-controller');
 router.post('/addProductToCart',AddProductToCart);
-router.get('/getCartByUserId/:userId',GetCartByUserId);
+router.get('/getCartByUserId',GetCartByUserId);
 router.put('/deleteProductFromCart',DeleteProductFromCart);
 router.put('/updateProductQuantity',UpdateProductQuantity);
-router.put('/emptyCart/:userId',EmptyCart);
-router.delete('/deleteCart/:userId',DeleteCart);
+router.patch('/emptyCart/:cartId',EmptyCart);
+router.delete('/deleteCart/:_id',DeleteCart);
 module.exports=router;

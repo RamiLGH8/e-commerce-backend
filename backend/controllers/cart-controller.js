@@ -31,8 +31,8 @@ exports.DeleteProductFromCart=async(req,res)=>{
 }
 exports.EmptyCart=async(req,res)=>{
     try{
-        const {userId}=req.params;
-        const cart=await CartService.EmptyCart(userId);
+        const {cartId}=req.params;
+        const cart=await CartService.EmptyCart(cartId);
         return res.status(200).json({cart});
     }
     catch(err){
@@ -51,8 +51,8 @@ exports.UpdateProductQuantity=async(req,res)=>{
 }
 exports.DeleteCart=async(req,res)=>{
     try{
-        const {userId}=req.params;
-        const cart=await CartService.DeleteCart(userId);
+        const {_id}=req.params;
+        await CartService.DeleteCart(_id);
         return res.status(200).json({cart});
     }
     catch(err){
