@@ -41,8 +41,8 @@ exports.EmptyCart=async(req,res)=>{
 }
 exports.UpdateProductQuantity=async(req,res)=>{
     try{
-        const {userId,productId,quantity}=req.body;
-        const cart=await CartService.UpdateProductQuantity(userId,productId,quantity);
+        const {cartId,productId,quantity}=req.body;
+        const cart=await CartService.UpdateProductQuantity(cartId,productId,quantity);
         return res.status(200).json({cart});
     }
     catch(err){

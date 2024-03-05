@@ -50,9 +50,9 @@ class CartService {
             throw err;
         }
     }
-    static async UpdateProductQuantity(userId, productId, quantity) {
+    static async UpdateProductQuantity(cartId, productId, quantity) {
         try {
-            const cart = await Cart.findOne({ user: userId });
+            const cart = await Cart.findOne({ _id: cartId});
             const productIndex = cart.products.findIndex(product => product.product == productId);
             if (productIndex >= 0) {
                 cart.products[productIndex].quantity = quantity;
