@@ -1,4 +1,4 @@
-const ordersService=require('../services/orders-service');
+const ordersService=require('../services/order-service');
 exports.CreateOrder=async(req,res)=>{
     try{
         const {cartId,shippingAddress,paymentInformation}=req.body;

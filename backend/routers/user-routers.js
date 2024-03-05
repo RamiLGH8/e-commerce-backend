@@ -1,15 +1,5 @@
 const router= require('express').Router();
 const { RegisterUser , Login} = require('../controllers/user-controller');
-const {GetProductsByCategory,GetNewArrivals}=require('../controllers/product-controller');
-const {AddProductToCart,GetCartByUserId,DeleteProductFromCart,UpdateProductQuantity,EmptyCart,DeleteCart}=require('../controllers/cart-controller');
 router.post('/register',RegisterUser);
 router.post('/login',Login);
-router.get('/products/:category',GetProductsByCategory);
-router.get('/new-arrivals',GetNewArrivals);
-router.post('/cart',AddProductToCart);
-router.get('/cart/:userId',GetCartByUserId);
-router.delete('/cart/delete-product',DeleteProductFromCart);
-router.delete('/cart/empty-cart/:userId',EmptyCart);
-router.delete('/cart/:userId',DeleteCart);
-router.put('/cart/update-product-quantity',UpdateProductQuantity);
 module.exports=router;
